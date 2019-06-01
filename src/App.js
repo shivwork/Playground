@@ -1,41 +1,29 @@
+// libs
 import React, { Component } from "react";
-import logo from "./logo.svg";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+// Components
 import "./App.css";
+import Header from "../src/app/Structure/Header/Header";
+import { Home } from "../src/app/Structure/Home/Home";
+import CssComponent from "../src/app/Css/Css";
+import JavascriptComp from "../src/app/Javascript/Javascript";
+import ReactComp from "../src/app/React";
 
-class App extends Component {
-  componentDidMount() {
-    const add = (one, two) => {
-      const a = one + two;
-      return a;
-    };
-
-    (() => {
-      const a = "sdfdsf";
-      console.log("parent : ->");
-      add(1, 2);
-    })();
-  }
+class app extends Component {
   render() {
     return (
-      <div className="App">
-        <button id="shivBtn">shiv</button>
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Router>
+        <div>
+          <Header />
+          <Route exact path="/" component={Home} />
+          <Route path="/css" component={CssComponent} />
+          <Route path="/js" component={JavascriptComp} />
+          <Route path="/react" component={ReactComp} />
+        </div>
+      </Router>
     );
   }
 }
 
-export default App;
+export default app;
